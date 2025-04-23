@@ -1,0 +1,32 @@
+/* styles.css (Extracto de diseño premium) */
+:root {
+    --azul-judicial: #1e3a8a;
+    --oro-legal: #d4af37;
+    --gris-antracita: #2d3748;
+    --gris-perla: #f8f9fa;
+}
+
+.hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    padding: 4rem;
+}
+
+.text-gradient {
+    background: linear-gradient(45deg, var(--azul-judicial), var(--oro-legal));
+    -webkit-background-clip: text;
+    color: transparent;
+    font: 900 3.5rem "Playfair Display";
+}
+
+.magnetic {
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.magnetic:hover {
+    transform: translate(-5px, -5px) scale(1.05);
+    box-shadow: 0 20px 30px rgba(30, 58, 138, 0.2);
+}

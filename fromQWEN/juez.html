@@ -1,0 +1,8 @@
+// radarChart.js (Visualización con Chart.js) const renderRadarChart = () => {
+const ctx = document.getElementById('performanceChart'); new Chart(ctx, { type:
+'radar', data: { labels: ['Integridad', 'Eficiencia', 'Conocimiento',
+'Imparcialidad'], datasets: [{ label: 'Evaluación 2024', data: [85, 90, 78, 92],
+backgroundColor: 'rgba(30, 58, 138, 0.2)', borderColor: '#1E3A8A', borderWidth:
+2 }] }, options: { scales: { r: { angleLines: { color: '#F8F9FA' }, grid: {
+color: '#D4AF3730' } } }, plugins: { tooltip: { callbacks: { label: (context) =>
+`${context.label}: ${context.formattedValue}/100` } } } } }); }
