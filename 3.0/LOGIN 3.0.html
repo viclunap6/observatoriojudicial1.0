@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Acceso Juristas | MisJueces.Mx</title>
+        <link rel="stylesheet" href="login.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="auth-container">
+            <div class="auth-illustration">
+                <div class="illustration-content">
+                    <h1>Evaluación <span>Confidencial</span></h1>
+                    <p>Sistema exclusivo para juristas certificados</p>
+                    <div class="security-badge">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11V11.99z"
+                            />
+                        </svg>
+                        <span>Conexión segura SSL</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="auth-form-container">
+                <div class="auth-form-card">
+                    <div class="form-header">
+                        <h2>Ingreso de Juristas</h2>
+                        <p>Verificación mediante cédula profesional</p>
+                    </div>
+
+                    <div class="privacy-notice">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v2h-2v-2zm0-12h2v8h-2V5z"
+                            />
+                        </svg>
+                        <p>
+                            <strong>Tu identidad será anónima</strong> en todas
+                            tus evaluaciones y comentarios.
+                        </p>
+                    </div>
+
+                    <form class="auth-form">
+                        <div class="input-group">
+                            <label for="fullName"
+                                >Nombre completo (como en tu cédula)</label
+                            >
+                            <input type="text" id="fullName" required />
+                        </div>
+
+                        <div class="input-group">
+                            <label for="cedula"
+                                >Número de cédula profesional</label
+                            >
+                            <input
+                                type="text"
+                                id="cedula"
+                                pattern="[0-9]{8}"
+                                required
+                            />
+                            <span class="input-hint"
+                                >8 dígitos sin espacios</span
+                            >
+                        </div>
+
+                        <div class="input-group">
+                            <label for="contact"
+                                >Correo electrónico o celular</label
+                            >
+                            <input type="text" id="contact" required />
+                        </div>
+
+                        <div class="input-group">
+                            <label for="password">Contraseña</label>
+                            <div class="password-input">
+                                <input
+                                    type="password"
+                                    id="password"
+                                    minlength="8"
+                                    required
+                                />
+                                <button type="button" class="toggle-password">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"
+                                        />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="verification-section">
+                            <h3>Verificación de identidad</h3>
+                            <div class="file-upload">
+                                <div class="upload-prompt">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"
+                                        />
+                                    </svg>
+                                    <p>
+                                        Sube foto de tu cédula profesional
+                                        (frontal)
+                                    </p>
+                                    <button type="button" class="browse-btn">
+                                        Seleccionar archivo
+                                    </button>
+                                    <input
+                                        type="file"
+                                        id="cedulaPhoto"
+                                        accept="image/*"
+                                        style="display: none"
+                                    />
+                                </div>
+                                <div
+                                    class="file-preview"
+                                    id="filePreview"
+                                    style="display: none"
+                                >
+                                    <span
+                                        class="file-name"
+                                        id="fileName"
+                                    ></span>
+                                    <button type="button" class="remove-file">
+                                        ×
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <span>Verificar cédula</span>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                                />
+                            </svg>
+                        </button>
+
+                        <div class="form-footer">
+                            <p>
+                                Al registrarte, aceptas nuestros
+                                <a href="#">Términos</a> y
+                                <a href="#">Política de privacidad</a>
+                            </p>
+                            <p>
+                                ¿Ya tienes cuenta? <a href="#">Inicia sesión</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="login.js"></script>
+    </body>
+</html>

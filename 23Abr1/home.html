@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>MisJueces.Mx | Justicia Transparente</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            /* CSS Reset y variables */
+            :root {
+                --primary: #3a1d6e;
+                --secondary: #ffffff;
+                --accent: #00c4b3;
+                --text: #2d3748;
+                --text-light: #718096;
+                --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            html {
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: "Inter", "Helvetica Neue", sans-serif;
+                color: var(--text);
+                background-color: var(--secondary);
+                line-height: 1.8;
+                font-size: 1.1rem;
+                overflow-x: hidden;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            /* Tipografía premium */
+            h1 {
+                font-size: 3.5rem;
+                letter-spacing: -1.5px;
+                line-height: 1.1;
+                font-weight: 700;
+                margin-bottom: 1.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+                font-weight: 600;
+                letter-spacing: -0.5px;
+                margin-bottom: 1.25rem;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+                font-weight: 500;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin-bottom: 1.5rem;
+                color: var(--text-light);
+            }
+
+            .text-gradient {
+                background: linear-gradient(
+                    90deg,
+                    var(--primary) 0%,
+                    var(--accent) 100%
+                );
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+
+            /* Layout */
+            .container {
+                width: 100%;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 2rem;
+            }
+
+            section {
+                padding: 8rem 0;
+                position: relative;
+            }
+
+            /* Hero Section */
+            .hero {
+                height: 100vh;
+                min-height: 800px;
+                display: flex;
+                align-items: center;
+                background: linear-gradient(
+                    135deg,
+                    rgba(58, 29, 110, 0.03) 0%,
+                    rgba(0, 196, 179, 0.03) 100%
+                );
+                position: relative;
+                overflow: hidden;
+            }
+
+            .hero::before {
+                content: "";
+                position: absolute;
+                top: -50%;
+                right: -50%;
+                width: 100%;
+                height: 200%;
+                background: radial-gradient(
+                    circle,
+                    rgba(58, 29, 110, 0.1) 0%,
+                    rgba(255, 255, 255, 0) 70%
+                );
+                z-index: -1;
+            }
+
+            .hero-content {
+                max-width: 700px;
+                position: relative;
+                z-index: 2;
+            }
+
+            .subtitle {
+                font-size: 1.25rem;
+                margin-bottom: 3rem;
+                color: var(--text-light);
+                max-width: 600px;
+            }
+
+            /* Botón CTA */
+            .cta-button {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                padding: 1rem 2rem;
+                background: linear-gradient(
+                    135deg,
+                    var(--primary) 0%,
+                    var(--accent) 100%
+                );
+                color: var(--secondary);
+                border: none;
+                border-radius: 50px;
+                font-size: 1rem;
+                font-weight: 500;
+                cursor: pointer;
+                transition: var(--transition);
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 4px 15px rgba(58, 29, 110, 0.2);
+            }
+
+            .cta-button span {
+                position: relative;
+                z-index: 2;
+            }
+
+            .cta-button::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    135deg,
+                    var(--accent) 0%,
+                    var(--primary) 100%
+                );
+                opacity: 0;
+                transition: var(--transition);
+            }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 25px rgba(0, 196, 179, 0.3);
+            }
+
+            .cta-button:hover::before {
+                opacity: 1;
+            }
+
+            .cta-button svg {
+                width: 20px;
+                height: 20px;
+                margin-left: 10px;
+                transition: var(--transition);
+            }
+
+            .cta-button:hover svg {
+                transform: translateX(5px);
+            }
+
+            /* Scroll hint */
+            .hero-scroll-hint {
+                position: absolute;
+                bottom: 2rem;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 30px;
+                height: 50px;
+                border: 2px solid var(--text-light);
+                border-radius: 15px;
+                opacity: 0.6;
+            }
+
+            .hero-scroll-hint::before {
+                content: "";
+                position: absolute;
+                top: 10px;
+                left: 50%;
+                width: 6px;
+                height: 6px;
+                background: var(--text-light);
+                border-radius: 50%;
+                transform: translateX(-50%);
+                animation: scrollHint 2s infinite;
+            }
+
+            @keyframes scrollHint {
+                0% {
+                    transform: translateX(-50%) translateY(0);
+                    opacity: 0;
+                }
+                50% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateX(-50%) translateY(15px);
+                    opacity: 0;
+                }
+            }
+
+            /* Features Section */
+            .features {
+                background-color: var(--secondary);
+            }
+
+            .features-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 3rem;
+                margin-top: 4rem;
+            }
+
+            .feature-card {
+                background: var(--secondary);
+                border-radius: 12px;
+                padding: 2.5rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                transition: var(--transition);
+                border: 1px solid rgba(0, 0, 0, 0.03);
+            }
+
+            .feature-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            }
+
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                background: linear-gradient(
+                    135deg,
+                    rgba(58, 29, 110, 0.1) 0%,
+                    rgba(0, 196, 179, 0.1) 100%
+                );
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+            }
+
+            .feature-icon svg {
+                width: 30px;
+                height: 30px;
+                color: var(--primary);
+            }
+
+            /* Stats Section */
+            .stats {
+                background-color: #f9fafb;
+            }
+
+            .stats-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .stat-item {
+                padding: 2rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+                font-weight: 700;
+                color: var(--primary);
+                margin-bottom: 0.5rem;
+                line-height: 1;
+            }
+
+            .stat-label {
+                color: var(--text-light);
+                font-size: 1rem;
+            }
+
+            /* Testimonials */
+            .testimonials {
+                position: relative;
+            }
+
+            .testimonial-slider {
+                margin-top: 4rem;
+                position: relative;
+            }
+
+            .testimonial-card {
+                background: var(--secondary);
+                border-radius: 12px;
+                padding: 3rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+                margin: 0 1rem;
+                border: 1px solid rgba(0, 0, 0, 0.03);
+            }
+
+            .testimonial-text {
+                font-size: 1.25rem;
+                font-style: italic;
+                margin-bottom: 2rem;
+                color: var(--text);
+                position: relative;
+            }
+
+            .testimonial-text::before {
+                content: '"';
+                position: absolute;
+                top: -1rem;
+                left: -1rem;
+                font-size: 4rem;
+                color: rgba(0, 196, 179, 0.1);
+                font-family: serif;
+                line-height: 1;
+            }
+
+            .testimonial-author {
+                display: flex;
+                align-items: center;
+            }
+
+            .author-avatar {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: var(--primary);
+                margin-right: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-weight: 600;
+            }
+
+            .author-info h4 {
+                margin-bottom: 0.25rem;
+            }
+
+            .author-info p {
+                margin-bottom: 0;
+                font-size: 0.9rem;
+                color: var(--text-light);
+            }
+
+            /* Footer */
+            footer {
+                background-color: var(--primary);
+                color: var(--secondary);
+                padding: 5rem 0 2rem;
+            }
+
+            .footer-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 3rem;
+                margin-bottom: 3rem;
+            }
+
+            .footer-logo {
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+                color: var(--secondary);
+            }
+
+            .footer-description {
+                color: rgba(255, 255, 255, 0.7);
+                margin-bottom: 1.5rem;
+            }
+
+            .footer-links h3 {
+                color: var(--secondary);
+                margin-bottom: 1.5rem;
+                font-size: 1.1rem;
+            }
+
+            .footer-links ul {
+                list-style: none;
+            }
+
+            .footer-links li {
+                margin-bottom: 0.75rem;
+            }
+
+            .footer-links a {
+                color: rgba(255, 255, 255, 0.7);
+                text-decoration: none;
+                transition: var(--transition);
+            }
+
+            .footer-links a:hover {
+                color: var(--secondary);
+                padding-left: 5px;
+            }
+
+            .footer-bottom {
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding-top: 2rem;
+                text-align: center;
+                color: rgba(255, 255, 255, 0.5);
+                font-size: 0.9rem;
+            }
+
+            /* Animaciones */
+            @keyframes float {
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+                50% {
+                    transform: translateY(-20px);
+                }
+            }
+
+            .floating {
+                animation: float 6s ease-in-out infinite;
+            }
+
+            /* Responsive */
+            @media (max-width: 768px) {
+                h1 {
+                    font-size: 2.5rem;
+                }
+
+                h2 {
+                    font-size: 1.75rem;
+                }
+
+                section {
+                    padding: 5rem 0;
+                }
+
+                .hero {
+                    min-height: 700px;
+                }
+
+                .hero-content {
+                    text-align: center;
+                }
+
+                .subtitle {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>
+                        La justicia se mide<br />con
+                        <span class="text-gradient">transparencia</span>
+                    </h1>
+                    <p class="subtitle">
+                        Evaluaciones anónimas por juristas certificados para
+                        construir un sistema judicial más justo y accesible para
+                        todos los mexicanos.
+                    </p>
+                    <button class="cta-button">
+                        <span>Registrarse como abogado</span>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                            />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="hero-scroll-hint"></div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features">
+            <div class="container">
+                <h2 class="text-center">Cómo funciona</h2>
+                <p
+                    class="text-center subtitle"
+                    style="
+                        max-width: 700px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    "
+                >
+                    Un proceso diseñado para garantizar evaluaciones confiables
+                    y significativas
+                </p>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Verificación rigurosa</h3>
+                        <p>
+                            Solo abogados con cédula profesional verificada
+                            pueden evaluar, garantizando la calidad de las
+                            opiniones.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Anonimato protegido</h3>
+                        <p>
+                            Tus evaluaciones son completamente anónimas. Tu
+                            identidad nunca se revelará a los jueces evaluados.
+                        </p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Datos significativos</h3>
+                        <p>
+                            Métricas completas que van más allá del promedio:
+                            distribución, consistencia y análisis de tendencias.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container">
+                <h2 class="text-center">Impacto medible</h2>
+                <p
+                    class="text-center subtitle"
+                    style="
+                        max-width: 700px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    "
+                >
+                    Estadísticas que demuestran nuestro compromiso con la
+                    transparencia judicial
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">1,247</div>
+                        <div class="stat-label">Jueces evaluados</div>
+                    </div>
+
+                    <div class="stat-item">
+                        <div class="stat-number">8,932</div>
+                        <div class="stat-label">Evaluaciones</div>
+                    </div>
+
+                    <div class="stat-item">
+                        <div class="stat-number">94%</div>
+                        <div class="stat-label">Abogados satisfechos</div>
+                    </div>
+
+                    <div class="stat-item">
+                        <div class="stat-number">6.8</div>
+                        <div class="stat-label">Promedio nacional</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <div class="container">
+                <h2 class="text-center">Lo que dicen los juristas</h2>
+                <p
+                    class="text-center subtitle"
+                    style="
+                        max-width: 700px;
+                        margin-left: auto;
+                        margin-right: auto;
+                    "
+                >
+                    Experiencias reales de abogados que utilizan nuestra
+                    plataforma
+                </p>
+
+                <div class="testimonial-slider">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">
+                            Gracias a MisJueces.Mx pude identificar qué jueces
+                            tienen un historial de imparcialidad en casos
+                            similares al mío, lo que cambió completamente mi
+                            estrategia legal.
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">M</div>
+                            <div class="author-info">
+                                <h4>Mariana González</h4>
+                                <p>Abogada penalista, CDMX</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section
+            style="
+                background: linear-gradient(
+                    135deg,
+                    var(--primary) 0%,
+                    var(--accent) 100%
+                );
+                color: white;
+                text-align: center;
+            "
+        >
+            <div class="container">
+                <h2 style="color: white">¿Eres abogado certificado?</h2>
+                <p
+                    style="
+                        color: rgba(255, 255, 255, 0.8);
+                        max-width: 600px;
+                        margin: 0 auto 2.5rem;
+                    "
+                >
+                    Únete a nuestra comunidad y contribuye a construir un
+                    sistema judicial más transparente para México.
+                </p>
+                <button
+                    class="cta-button"
+                    style="background: white; color: var(--primary)"
+                >
+                    <span>Registrarse ahora</span>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-col">
+                        <div class="footer-logo">MisJueces.Mx</div>
+                        <p class="footer-description">
+                            Plataforma independiente para la evaluación
+                            transparente del sistema judicial mexicano.
+                        </p>
+                    </div>
+
+                    <div class="footer-links">
+                        <h3>Explorar</h3>
+                        <ul>
+                            <li><a href="#">Jueces</a></li>
+                            <li><a href="#">Tribunales</a></li>
+                            <li><a href="#">Estadísticas</a></li>
+                            <li><a href="#">Métodología</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links">
+                        <h3>Recursos</h3>
+                        <ul>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Preguntas frecuentes</a></li>
+                            <li><a href="#">Guías</a></li>
+                            <li><a href="#">Contacto</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Términos de servicio</a></li>
+                            <li><a href="#">Privacidad</a></li>
+                            <li><a href="#">Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>© 2023 MisJueces.Mx - Todos los derechos reservados</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- JavaScript -->
+        <script>
+            // Efecto de scroll suave para el botón de scroll hint
+            document
+                .querySelector(".hero-scroll-hint")
+                .addEventListener("click", () => {
+                    window.scrollTo({
+                        top: document.querySelector(".features").offsetTop,
+                        behavior: "smooth",
+                    });
+                });
+
+            // Efecto hover premium para las tarjetas de características
+            document.querySelectorAll(".feature-card").forEach((card) => {
+                card.addEventListener("mousemove", (e) => {
+                    const x = e.pageX - card.getBoundingClientRect().left;
+                    const y = e.pageY - card.getBoundingClientRect().top;
+
+                    const centerX = card.offsetWidth / 2;
+                    const centerY = card.offsetHeight / 2;
+
+                    const angleX = (centerY - y) / 10;
+                    const angleY = (x - centerX) / 10;
+
+                    card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+                });
+
+                card.addEventListener("mouseleave", () => {
+                    card.style.transform =
+                        "perspective(1000px) rotateX(0) rotateY(0)";
+                });
+            });
+
+            // Cambiar el cursor en áreas interactivas
+            const interactiveElements = document.querySelectorAll(
+                "button, a, .feature-card",
+            );
+
+            interactiveElements.forEach((el) => {
+                el.style.cursor = "pointer";
+                el.addEventListener("mouseenter", () => {
+                    document.body.style.cursor = "pointer";
+                });
+                el.addEventListener("mouseleave", () => {
+                    document.body.style.cursor = "default";
+                });
+            });
+
+            // Animación de carga (simulada)
+            window.addEventListener("load", () => {
+                setTimeout(() => {
+                    document.body.classList.add("loaded");
+                }, 1000);
+            });
+        </script>
+    </body>
+</html>
