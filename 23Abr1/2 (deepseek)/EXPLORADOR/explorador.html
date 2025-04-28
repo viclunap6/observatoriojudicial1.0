@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Explorador Judicial - MiSjueces.MX</title>
+        <!-- Estilos -->
+        <link rel="stylesheet" href="assets/css/styles.css" />
+        <!-- D3.js -->
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+    </head>
+    <body>
+        <!-- Sección Explorador -->
+        <main class="explorer-container">
+            <div class="filters">
+                <h2>Filtros</h2>
+                <div class="filter-group">
+                    <label for="tribunal">Tribunal</label>
+                    <select id="tribunal">
+                        <option value="all">Todos</option>
+                        <option value="civil">Civil</option>
+                        <option value="penal">Penal</option>
+                        <option value="familiar">Familiar</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="specialty">Especialidad</label>
+                    <select id="specialty">
+                        <option value="all">Todos</option>
+                        <option value="derecho-civil">Derecho Civil</option>
+                        <option value="derecho-penal">Derecho Penal</option>
+                        <option value="derecho-laboral">Derecho Laboral</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="rating">Rating</label>
+                    <input
+                        type="range"
+                        id="rating"
+                        min="1"
+                        max="10"
+                        value="5"
+                    />
+                    <output id="rating-output">5</output>
+                </div>
+            </div>
+            <!-- Mapa Interactivo -->
+            <div class="map-container">
+                <svg id="map" width="100%" height="600"></svg>
+            </div>
+            <!-- Detalles del Tribunal -->
+            <div class="details-panel" id="details-panel">
+                <h3>Detalles del Tribunal</h3>
+                <p id="tribunal-name">Nombre del Tribunal</p>
+                <p id="tribunal-rating">
+                    Rating: <span id="rating-value">-</span>
+                </p>
+                <p id="tribunal-specialty">
+                    Especialidad: <span id="specialty-value">-</span>
+                </p>
+                <button id="close-details">Cerrar</button>
+            </div>
+        </main>
+
+        <!-- Scripts -->
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>

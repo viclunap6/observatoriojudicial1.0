@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login - Misjueces.mx</title>
+        <link rel="stylesheet" href="assets/css/styles.css" />
+    </head>
+    <body>
+        <!-- Login Section -->
+        <section class="login-section">
+            <div class="container">
+                <h2 data-animation="fade-in">Iniciar sesión</h2>
+
+                <form id="loginForm" onsubmit="return validateForm()">
+                    <div class="form-group">
+                        <label for="cedulaProfesional" data-animation="fade-in"
+                            >Cédula Profesional:</label
+                        >
+                        <input
+                            type="text"
+                            id="cedulaProfesional"
+                            name="cedulaProfesional"
+                            required
+                            pattern="[0-9]{1,}"
+                            maxlength="10"
+                            class="form-control"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" data-animation="fade-in"
+                            >Contraseña:</label
+                        >
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            minlength="8"
+                            maxlength="50"
+                            class="form-control"
+                        />
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary"
+                        data-animation="magnetic-hover"
+                    >
+                        Iniciar sesión
+                    </button>
+                </form>
+
+                <div id="error-message" style="display: none"></div>
+            </div>
+        </section>
+
+        <!-- Scripts -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/all.min.js"></script>
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>

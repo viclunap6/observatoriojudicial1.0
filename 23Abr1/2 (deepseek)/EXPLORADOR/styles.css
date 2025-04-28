@@ -1,0 +1,144 @@
+/* Variables Globales */
+:root {
+    --primary: #1e3a8a;
+    --secondary: #d4af37;
+    --accent: #38a169;
+    --error: #e53e3e;
+    --text: #2d3748;
+    --bg: #f8f9fa;
+}
+
+/* Reset General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+    background-color: var(--bg);
+    line-height: 1.6;
+}
+
+/* Contenedor Explorador */
+.explorer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: var(--primary);
+}
+
+.filters {
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.filters h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.filter-group {
+    margin-bottom: 1rem;
+}
+
+.filter-group label {
+    display: block;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.filter-group select,
+.filter-group input[type="range"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--text);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.filter-group output {
+    display: inline-block;
+    margin-left: 0.5rem;
+    font-weight: bold;
+    color: var(--secondary);
+}
+
+/* Mapa Interactivo */
+.map-container {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+}
+
+#map {
+    border: 1px solid var(--text);
+    border-radius: 0.75rem;
+    background-color: white;
+}
+
+/* Detalles del Tribunal */
+.details-panel {
+    display: none;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.details-panel h3 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.details-panel p {
+    margin-bottom: 0.5rem;
+}
+
+.details-panel button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--secondary);
+    color: black;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.details-panel button:hover {
+    background-color: var(--accent);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .explorer-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .filters {
+        margin-right: 2rem;
+    }
+
+    .map-container {
+        flex: 1;
+    }
+}
