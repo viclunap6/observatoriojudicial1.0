@@ -1,0 +1,60 @@
+┌─────────────┐    ┌─────────────┐    ┌──────────────┐
+│   Usuario   │    │  Frontend   │    │   Backend    │
+└──────┬──────┘    └──────┬──────┘    └──────┬───────┘
+       │                  │                   │
+       │  Solicita acceso │                   │
+       │────────────────>│                   │
+       │                  │                   │
+       │  Muestra formulario de registro     │
+       │<────────────────│                   │
+       │                  │                   │
+       │  Ingresa email + teléfono            │
+       │────────────────>│                   │
+       │                  │  Envía datos      │
+       │                  │──────────────────>│
+       │                  │                   │  Valida datos
+       │                  │                   │  Genera código
+       │                  │                   │  Envía SMS/Email
+       │                  │  Solicita código  │
+       │                  │<──────────────────│
+       │  Pide código     │                   │
+       │<────────────────│                   │
+       │                  │                   │
+       │  Ingresa código  │                   │
+       │────────────────>│                   │
+       │                  │  Verifica código  │
+       │                  │──────────────────>│
+       │                  │                   │  Crea usuario
+       │                  │                   │  Genera token
+       │                  │  Token válido     │
+       │                  │<──────────────────│
+       │  Acceso concedido│                   │
+       │<────────────────│                   │
+       │                  │                   │
+       │  Solicita listado jueces             │
+       │────────────────>│                   │
+       │                  │  Pide datos       │
+       │                  │──────────────────>│
+       │                  │                   │  Consulta DB
+       │                  │  Listado jueces   │
+       │                  │<──────────────────│
+       │  Muestra listado │                   │
+       │<────────────────│                   │
+       │                  │                   │
+       │  Selecciona juez │                   │
+       │────────────────>│                   │
+       │                  │                   │
+       │  Muestra formulario votación         │
+       │<────────────────│                   │
+       │                  │                   │
+       │  Envía votación  │                   │
+       │ (1-10)          │                   │
+       │────────────────>│                   │
+       │                  │  Registra voto    │
+       │                  │──────────────────>│
+       │                  │                   │  Valida usuario
+       │                  │                   │  Actualiza DB
+       │                  │  Confirmación     │
+       │                  │<──────────────────│
+       │  Muestra confirm│                   │
+       │<────────────────│                   │
